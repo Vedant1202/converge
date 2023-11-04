@@ -1,6 +1,6 @@
 $(function () {
     var loginData;
-    if (!!window.localStorage.getItem('loginData')) {
+    if (!!window.localStorage.getItem('loginData')) { // check for login data
         loginData = JSON.parse(window.localStorage.getItem('loginData'));
     } else {
         alert('Invalid session! Click continue to redirect to login page')
