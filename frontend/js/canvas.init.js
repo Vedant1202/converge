@@ -1,4 +1,12 @@
 $(function () {
+    var loginData;
+    if (!!window.localStorage.getItem('loginData')) {
+        loginData = JSON.parse(window.localStorage.getItem('loginData'));
+    } else {
+        alert('Invalid session! Click continue to redirect to login page')
+        window.location = '../login/login.html'
+    }
+
     var canvas = document.getElementById("canvas")
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
