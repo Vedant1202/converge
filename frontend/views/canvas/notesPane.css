@@ -9,35 +9,37 @@ body, html { height: 100%; }
     transform: translateY(-50%);
     border-radius: 25px;
     background-color: white;
-    width: 250px;
+    width: 15vw;
     border: 3px solid black;
     display: none;
 }
 
 #writingArea {
     resize: none;
-    margin-left: 10px;
+    margin-left: 0.5vw;
     margin-bottom: 5px;
     border-radius: 10px;
     background-color: rgb(224, 224, 224);
-    height: 50px;
-    width: 187px;
+    width: 13.4vw;
     height: 30px;
-    padding: 20px;
+    padding-left: 0.5vw;
+    padding-top: 1vh;
     text-align: left;
 }
 
 .form-container h1 {
+    padding-left: 0.5vw;
     border-bottom: 3px solid black;
     
     
 }
 
 #notesList {
-    min-height: 480px;
-    max-height: 480px;
-    margin-left: 10px;
-    margin-top: 5px;
+    height: 50vh;
+    margin-left: 1vw;
+    margin-top: 1vh;
+    padding-bottom: 1vh;
+    line-height: 3vh;
     list-style-position: inside;
     overflow-y: scroll;
     overflow-wrap: break-word;
