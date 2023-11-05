@@ -2,20 +2,25 @@
 
 body, html { height: 100%; }
 
-.form-container {
+#notesWindow {
     position: absolute;
     top: 20%;
     left: 85%;
-    
+    border-radius: 25px;
     background-color: white;
     width: 200px;
-    border: 3px solid black;  
+    border: 3px solid black;
+    display: none;
 }
 
-.form-container textarea {
+#writingArea {
     resize: none;
     margin-left: 10px;
     margin-bottom: 5px;
+    border-radius: 10px;
+    background-color: rgb(224, 224, 224);
+    height: 50px;
+    text-indent: 5px;
     
 }
 
@@ -25,7 +30,7 @@ body, html { height: 100%; }
     
 }
 
-.form-container ul {
+#notesList {
     min-height: 500px;
     margin-left: 20px;
     margin-top: 5px;

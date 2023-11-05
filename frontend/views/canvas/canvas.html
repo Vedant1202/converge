@@ -15,15 +15,18 @@
     </div> -->
     <div class="canvas-div">
         <canvas id="canvas"></canvas>
-        <form class="form-container">
+    </div>
+    <div class="notes">
+        <form class="form-container" id="notesWindow">
             <h1>&nbspNotes</h1>
             <ul id="notesList"> 
                 <li>Test</li>
                 <li>Testing...</li>
             </ul>
-            <textarea placeholder="Write a note..." required></textarea>
+            <textarea id="writingArea" placeholder="Write a note..." required></textarea>
         </form>
     </div>
     <script src="../../js/canvas.init.js"></script>
+    <script src="../../js/notes.js"></script>
 </body>
 </html>
