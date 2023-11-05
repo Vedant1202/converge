@@ -14,6 +14,34 @@ function addNoteToList() {
     if (text !== "") {
         const newNote = document.createElement("li");
         newNote.textContent = text;
+
+        // makes note editable upon click in text area
+        newNote.addEventListener("click", function(event) {
+            const listElement = event.target;
+            listElement.contentEditable = "true";
+            listElement.focus();
+        })
+        
+        // disables note edit when clicking outside of note text area
+        newNote.addEventListener("blur", function(event) {
+            const listElement = event.target;
+            listElement.contentEditable = "false";
+            if (listElement.textContent === "") {
+                notesList.removeChild(listElement); // deletes note if edited to be empty
+            }
+        })
+
+        // for consistency with creating note, edit disabled upon enter press
+        newNote.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                const listElement = event.target;
+                listElement.contentEditable = "false";
+                if (listElement.textContent === "") {
+                    notesList.removeChild(listElement); // deletes note if edited to be empty
+                }
+            }
+            
+        })
         notesList.appendChild(newNote);
         notesList.scrollTop = notesList.scrollHeight;
         capturedNote.value = "";
