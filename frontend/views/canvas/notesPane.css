@@ -45,7 +45,7 @@ body, html { height: 100%; }
     overflow-wrap: break-word;
 }
 
-li {
+.form-container li {
     text-indent: -1.3em;
     padding-left: 1em;
     padding-right: 1em;
