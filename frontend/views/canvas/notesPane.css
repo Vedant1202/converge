@@ -22,6 +22,7 @@ body, html { height: 100%; }
     background-color: rgb(224, 224, 224);
     width: 13.4vw;
     height: 30px;
+    font-size: 12pt;
     padding-left: 0.5vw;
     padding-top: 1vh;
     text-align: left;
@@ -38,8 +39,9 @@ body, html { height: 100%; }
     height: 50vh;
     margin-left: 1vw;
     margin-top: 1vh;
+    font-size: 16pt;
     padding-bottom: 1vh;
-    line-height: 3vh;
+    line-height: 5vh;
     list-style-position: inside;
     overflow-y: scroll;
     overflow-wrap: break-word;
