@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="canvas.css">
+    <link rel="stylesheet" href="notesPane.css">
     <script src="../../resources/jquery.min.js"></script>
     <script src="../../resources/fabric.min.js"></script>
 </head>
@@ -15,6 +16,14 @@
     <div class="canvas-div">
         <canvas id="canvas"></canvas>
     </div>
+    <div class="notes">
+        <form class="form-container" id="notesWindow">
+            <h1>&nbspNotes</h1>
+            <ul id="notesList"></ul>
+            <textarea id="writingArea" placeholder="Write a note..." required></textarea>
+        </form>
+    </div>
     <script src="../../js/canvas.init.js"></script>
+    <script src="../../js/notes.js"></script>
 </body>
 </html>
