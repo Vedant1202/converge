@@ -18,9 +18,24 @@ function addNoteToList() {
     const notesList = document.getElementById("notesList");
     const text = capturedNote.value.trim();
     if (text !== "") {
-        const newNote = document.createElement("li");
-        newNote.textContent = text;
+        const noteContainer = document.createElement("div"); // create container for note post format :{p, li}
+        const nameField = document.createElement("p"); // create paragraph to hold user name
+        const newNote = document.createElement("li"); // create list item to hold note contents
 
+        const jsonData = localStorage.getItem("loginData"); // retreive saved login data from login screen
+        const object = JSON.parse(jsonData); // parse through login data
+        const userName = object.name; // set user name equal name field from login data
+
+        // if there exists a username, set the namefield. Otherwise, user is Anonymous
+        if (userName) {
+            nameField.textContent = userName;
+        }
+        else {
+            nameField.textContent =  "Anonymous";
+        }
+
+        newNote.textContent = text; // assign newNote list item with note contents
+        
         // makes note editable upon click in text area
         newNote.addEventListener("click", function(event) {
             const listElement = event.target;
@@ -32,8 +47,9 @@ function addNoteToList() {
         newNote.addEventListener("blur", function(event) {
             const listElement = event.target;
             listElement.contentEditable = "false";
+            const nContainer = listElement.parentNode;
             if (listElement.textContent === "") {
-                notesList.removeChild(listElement); // deletes note if edited to be empty
+                notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
             }
         })
 
@@ -42,15 +58,19 @@ function addNoteToList() {
             if (event.key === "Enter") {
                 const listElement = event.target;
                 listElement.contentEditable = "false";
+                const nContainer = listElement.parentNode;
                 if (listElement.textContent === "") {
-                    notesList.removeChild(listElement); // deletes note if edited to be empty
+                    notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
                 }
             }
             
         })
-        notesList.appendChild(newNote);
-        notesList.scrollTop = notesList.scrollHeight;
-        capturedNote.value = "";
+
+        noteContainer.appendChild(nameField); // add user name to container
+        noteContainer.appendChild(newNote); // add note contents to container
+        notesList.appendChild(noteContainer); // insert user name and note into note list
+        notesList.scrollTop = notesList.scrollHeight; // scroll to recently added note
+        capturedNote.value = ""; // resets note writing text box
     }
 }
 
