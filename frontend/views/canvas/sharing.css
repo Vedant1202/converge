@@ -1,14 +1,14 @@
 #popup-container {
   position: fixed;
-  top: 150px; /* Add padding from the top */
-  right: -400px; /* Add padding from the right */
-  bottom: 150px; /* Add padding from the bottom */
+  top: 150px; 
+  right: -400px; 
+  bottom: 150px;
   border-radius: 10px; 
   width: 200px;
   height: 50%;
   background: white;
   border: 2px solid black;
-  padding: 10px; /* Add padding to the left */
+  padding: 10px;
   z-index: 10;
   transition: right 0.3s ease-in-out;
 }
@@ -19,14 +19,14 @@
 #popup-header {
   background-color: #f0f0f0;
   padding: 10px;
-  position: relative; /* Make the header a positioning context for the close button */
+  position: relative;
 }
 
 #popup-header h1 {
   font-size: 14px;
   text-decoration: underline;
-  margin: 0; /* Remove any default margin to avoid spacing issues */
-  display: inline; /* Make the header and button appear inline */
+  margin: 0; 
+  display: inline;
 }
 
 #close-button {
@@ -36,8 +36,8 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 20px; /* Adjust the font size as needed */
-  color: #000; /* Adjust the color as needed */
+  font-size: 20px;
+  color: #000;
 }
 
 #user-list {
@@ -52,9 +52,9 @@
 }
 
 .user-details img {
-  width: 15px; /* Adjust the size of the profile picture */
+  width: 15px; 
   height: 15px;
-  border-radius: 50%; /* Make the image circular for a profile picture effect */
+  border-radius: 50%; 
   margin-right: 10px;
 }
 
