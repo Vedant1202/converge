@@ -15,6 +15,55 @@
     <div class="canvas-div">
         <canvas id="canvas"></canvas>
     </div>
+    <button id="popup-button">Open Popup</button>
+  <div id="popup-container">
+    <div id="popup-content">
+      <div id="popup-header">
+        <h1>Collaboration Tools</h1>
+         <button id="close-button">X</button>
+        <hr> <!-- Underline -->
+      </div>
+      <ul id="user-list">
+        <li>
+          <div class="user-details">
+            <img src="blank2.png" alt="Profile Picture">
+            <span>User 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <select>
+              <option value="viewer">Viewer</option>
+              <option value="commenter">Commenter</option>
+              <option value="editor">Editor</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <div class="user-details">
+            <img src="blank2.png" alt="Profile Picture">
+            <span>User 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <select>
+              <option value="viewer">Viewer</option>
+              <option value="commenter">Commenter</option>
+              <option value="editor">Editor</option>
+            </select>
+          </div>
+        </li>
+        <li>
+          <div class="user-details">
+            <img src="blank2.png" alt="Profile Picture">
+            <span>User 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <select>
+              <option value="viewer">Viewer</option>
+              <option value="commenter">Commenter</option>
+              <option value="editor">Editor</option>
+            </select>
+          </div>
+        </li>
+      </ul>
+      <div id="search-bar">
+        <input type="text" placeholder="Share with email address">
+      </div>
+    </div>
+  </div>
+   <script src="sharing.js"></script> 
     <script src="../../js/canvas.init.js"></script>
 </body>
 </html>
