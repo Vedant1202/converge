@@ -7,6 +7,12 @@ capturedNote.addEventListener("keydown", function (event) {
     }
 });
 
+// prevents circle from being added when double clicking on note window
+const noteWindow = document.getElementById("notesWindow");
+noteWindow.addEventListener("dblclick", function(event) {
+    event.stopPropagation();
+})
+
 function addNoteToList() {
     const capturedNote = document.getElementById("writingArea");
     const notesList = document.getElementById("notesList");
