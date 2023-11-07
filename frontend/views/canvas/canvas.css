@@ -10,3 +10,74 @@ body, html { height: 100%; }
 #canvas {
     display: block;
 }
+
+/* Style the menu bar */
+.menu-bar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.menu-bar li {
+    display: inline;
+    margin-right: 15px;
+    position: relative;
+}
+
+.menu-title {
+    font-weight: bold;
+    color: white;
+}
+
+.menu-bar a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu-bar a:hover {
+    text-decoration: underline;
+}
+
+/* Style the dropdown menu */
+.dropdown {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 120px;
+    z-index: 1;
+    list-style-type: none;
+    padding: 0;
+}
+
+.dropdown li {
+    display: block;
+    margin: 0;
+}
+
+.dropdown a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.dropdown a:hover {
+    background-color: #555;
+}
+
+/* Create a spacer */
+.spacer {
+    flex-grow: 1;
+}
+
+/* Circular buttons styling */
