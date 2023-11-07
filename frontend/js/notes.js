@@ -58,7 +58,9 @@ function addNoteToList() {
             listElement.contentEditable = "false";
             const nContainer = listElement.parentNode;
             if (listElement.textContent === "") {
-                notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                if (notesList.contains(nContainer)) {
+                    notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                }
             }
         })
 
@@ -69,7 +71,9 @@ function addNoteToList() {
                 listElement.contentEditable = "false";
                 const nContainer = listElement.parentNode;
                 if (listElement.textContent === "") {
-                    notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                    if (notesList.contains(nContainer)) {
+                        notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                    }
                 }
             }
             

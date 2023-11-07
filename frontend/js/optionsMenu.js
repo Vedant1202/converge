@@ -59,7 +59,6 @@ function optionsEvents() {
     
     canvas.on('mouse:down', function(event) {
         if (event.button === 3 && event.target && event.target.isType('group')) {
-            console.log("right click");
             const optionsMenu = document.getElementById("optionsList");
             optionsMenu.style.display = "block";
             optionsMenu.style.left = event.e.clientX + "px";
