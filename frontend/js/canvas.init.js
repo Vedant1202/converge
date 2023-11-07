@@ -1,13 +1,24 @@
+var isCreateMode;
+var loginData;
+var heatmapData = {};
+var canvas;
+var heatmapInstance;
+var isHeatmapMode;
+var socket;
+var serverURL = 'http://localhost:3000';
+var eventReceived;
+
 $(function () {
-    var loginData;
+    isCreateMode = false;
+    isHeatmapMode = false;
     if (!!window.localStorage.getItem('loginData')) { // check for login data
         loginData = JSON.parse(window.localStorage.getItem('loginData'));
     } else {
         alert('Invalid session! Click continue to redirect to login page')
-        window.location = '../login/login.html'
+        window.location = '/login';
     }
 
-    var canvas = document.getElementById("canvas")
+    canvas = document.getElementById("canvas")
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
@@ -16,35 +27,14 @@ $(function () {
         canvas.height = window.innerHeight;
     })
 
-    var canvas = new fabric.Canvas('canvas');
+    canvas = new fabric.Canvas('canvas');
 
     $('body').dblclick(function (event) {
-        var circle = new fabric.Circle({
-            left: event.clientX - 100,
-            top: event.clientY - 150,
-            fill: 'transparent',
-            stroke: '.2rem black',
-            radius: 100,
-          });
-        // canvas.add(circle);
-        var tbox = new fabric.Textbox('Text on a path', {
-            left: event.clientX - 45,
-            top: event.clientY - 55,
-            width: 100,
-            fontSize: '16',
-            clipPath: circle,
-            fill: 'black',
-            fontcolor: 'black',
-          });
-        var group = new fabric.Group([ tbox, circle ], {
-            fill: 'green',
-            stroke: 'red',
-            
-        })
-        canvas.add(group);
-        // canvas.add(tbox);
+        var x = event.clientX;
+        var y = event.clientY;
+        createCircle(x, y);
         event.stopPropagation();
-    })
+    });
 
     canvas.on('mouse:down', function(options) {
         var groupItems;
@@ -113,5 +103,20 @@ $(function () {
                 });
             }    
         }
+    });
+
+    socket = io(serverURL);
+
+    socket.on('event', (event) => {
+        eventData = JSON.parse(event);
+        eventReceived = true;
+        console.log('event rec', eventData);
+        if (eventData.room === loginData.room) {
+            if (eventData.type === 'create', eventData.object === 'circle') {
+                console.log('event rec 2', eventData);
+                createCircle(eventData.data.x, eventData.data.y)
+            }
+        }
+        eventReceived = false;
     });
 })
