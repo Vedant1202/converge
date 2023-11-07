@@ -1,0 +1,61 @@
+* { margin: 0; padding: 0;}
+
+body, html { height: 100%; }
+
+#notesWindow {
+    position: fixed;
+    top: 50%;
+    right: 1%;
+    transform: translateY(-50%);
+    border-radius: 25px;
+    background-color: white;
+    width: 15vw;
+    border: 3px solid black;
+    display: none;
+}
+
+#writingArea {
+    resize: none;
+    margin-left: 0.5vw;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background-color: rgb(224, 224, 224);
+    width: 13.4vw;
+    height: 30px;
+    font-size: 12pt;
+    padding-left: 0.5vw;
+    padding-top: 1vh;
+    text-align: left;
+}
+
+.form-container h1 {
+    padding-left: 0.5vw;
+    border-bottom: 3px solid black;
+    
+    
+}
+
+#notesList {
+    height: 50vh;
+    margin-left: 1vw;
+    margin-top: 2vh;
+    font-size: 16pt;
+    list-style-position: inside;
+    overflow-y: scroll;
+    overflow-wrap: break-word;
+}
+
+.form-container li {
+   
+    margin-right: 1em;
+    margin-bottom: 2vh;
+    
+    list-style: none;
+}
+
+.form-container p {
+    font-style: italic;
+    font-size: 15pt;
+    color:darkgray;
+    
+}
