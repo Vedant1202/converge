@@ -9,9 +9,13 @@ function toggleCreateMode() {
 }
 
 function toggleHeatmapMode() {
-    isHeatmapMode = !isHeatmapMode;
-    isCreateMode = false;
-    instantiateHeatMap();
+    if (!isHeatmapMode) {
+        isHeatmapMode = !isHeatmapMode;
+        isCreateMode = false;
+        instantiateHeatMap();
+    } else {
+        toggleCreateMode();
+    }
 }
 
 function createCircle(x, y) {
