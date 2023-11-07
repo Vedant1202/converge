@@ -32,7 +32,7 @@ $(function () {
     $('body').dblclick(function (event) {
         var x = event.clientX;
         var y = event.clientY;
-        createCircle(x, y);
+        createCircle(x, y, Date.now(), 100, true);
         event.stopPropagation();
     });
 
@@ -116,6 +116,10 @@ $(function () {
         opt.e.stopPropagation();
     });
 
+    canvas.on('object:modified', onObjectScaled);
+
+    canvas.on('object:moved', onObjectScaled);
+
     socket = io(serverURL);
 
     socket.on('event', (event) => {
@@ -123,9 +127,11 @@ $(function () {
         eventReceived = true;
         console.log('event rec', eventData);
         if (eventData.room === loginData.room) {
-            if (eventData.type === 'create', eventData.object === 'circle') {
+            if (eventData.type === 'create' && eventData.object === 'circle') {
                 console.log('event rec 2', eventData);
-                createCircle(eventData.data.x, eventData.data.y)
+                addCircleOnSocketEvent(eventData.data);
+            } else if (eventData.type === 'update' && eventData.object === 'circle') {
+                updateCircleOnSocketEvent(eventData.data);
             }
         }
         eventReceived = false;
