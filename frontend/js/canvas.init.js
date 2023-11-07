@@ -7,6 +7,8 @@ var isHeatmapMode;
 var socket;
 var serverURL = 'http://localhost:3000';
 var eventReceived;
+var currentGroup;
+var recBox, usrBox, comBox;
 
 $(function () {
     isCreateMode = false;
@@ -27,7 +29,10 @@ $(function () {
         canvas.height = window.innerHeight;
     })
 
-    canvas = new fabric.Canvas('canvas');
+    canvas = new fabric.Canvas('canvas', {
+        fireRightClick: true,
+        stopContextMenu: true
+    });
 
     $('body').dblclick(function (event) {
         var x = event.clientX;
@@ -36,6 +41,8 @@ $(function () {
         event.stopPropagation();
     });
 
+    optionsEvents();
+    
     canvas.on('mouse:down', function(options) {
         var groupItems;
         if (options.target) {
@@ -141,3 +148,5 @@ $(function () {
         event.stopPropagation();
     });
 })
+
+
