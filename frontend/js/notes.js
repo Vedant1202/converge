@@ -7,6 +7,15 @@ capturedNote.addEventListener("keydown", function (event) {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const notesButton = [...document.querySelectorAll(".circular-button")].find(button => button.textContent === "📝");
+    if (notesButton) {
+        notesButton.addEventListener("click", function () {
+          toggleNotesWindow();
+        });
+    }
+});
+
 // prevents circle from being added when double clicking on note window
 const noteWindow = document.getElementById("notesWindow");
 noteWindow.addEventListener("dblclick", function(event) {
