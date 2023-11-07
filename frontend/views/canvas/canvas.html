@@ -6,14 +6,56 @@
     <title>Document</title>
     <link rel="stylesheet" text="text/css" href="/views/canvas/canvas.css">
     <link rel="stylesheet" href="/views/canvas/notesPane.css">
+    <link rel="stylesheet" href="userMenuStyles.css">
     <script src="/resources/jquery.min.js"></script>
     <script src="/resources/fabric.min.js"></script>
     <script src="/resources/heatmap.min.js"></script>
     <script src="socket.io/socket.io.min.js"></script>
 </head>
 <body>
-        <canvas id="canvas"></canvas>
+    <! This is the top menu for application options -->
+    <div class="macos-menu-bar">
+        <div class="menu">
+            <div class="menu-title" contenteditable="true">Your Title</div>
+            <div class="menu-items">
+                <div class="menu-item with-dropdown" onmouseover="openDropdown('fileDropdown')" onmouseout="closeDropdown('fileDropdown')">File
+                    <ul id="fileDropdown" class="dropdown">
+                        <li><a href="#new">New</a></li>
+                        <li><a href="#open">Open</a></li>
+                        <li><a href="#save">Save</a></li>
+                    </ul>
+                </div>
+                <div class="menu-item with-dropdown" onmouseover="openDropdown('editDropdown')" onmouseout="closeDropdown('editDropdown')">Edit
+                    <ul id="editDropdown" class="dropdown">
+                        <li><a href="#cut">Cut</a></li>
+                        <li><a href="#copy">Copy</a></li>
+                        <li><a href="#paste">Paste</a></li>
+                    </ul>
+                </div>
+                <div class="menu-item with-dropdown" onmouseover="openDropdown('optionsDropdown')" onmouseout="closeDropdown('optionsDropdown')">Options
+                    <ul id="optionsDropdown" class="dropdown">
+                        <li><a href="#settings">Settings</a></li>
+                        <li><a href="#preferences">Preferences</a></li>
+                    </ul>
+                </div>
+                <div class="menu-item with-dropdown" onmouseover="openDropdown('helpDropdown')" onmouseout="closeDropdown('helpDropdown')">Help
+                    <ul id="helpDropdown" class="dropdown">
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#support">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+    <! This is the side menu with the user Interface options -->
+    <div class="circular-menu">
+        <div class="circular-button new-idea" data-tooltip="Create a new idea">➕</div>
+        <div class="circular-button heatmap" data-tooltip="View HeatMap">🔥</div>
+        <div class="circular-button select" data-tooltip="Select items">✅</div>
+        <div class="circular-button notepad" data-tooltip="Open Notepad">📝</div>
+        <div class="circular-button collaboration" data-tooltip="Collaboration menu">🤝</div>
+    </div>
+
     <div class="notes">
         <form class="form-container" id="notesWindow">
             <h1>&nbspNotes</h1>
@@ -24,5 +66,21 @@
     <script src="/js/canvas.init.js"></script>
     <script src="/js/canvas.utils.js"></script>
     <script src="/js/notes.js"></script>
+    <script src="/js/menuOptionsHover.js"></script>
+    <script>
+        function openDropdown(id) {
+            var dropdown = document.getElementById(id);
+            dropdown.style.display = 'block';
+        }
+        function closeDropdown(id) {
+            var dropdown = document.getElementById(id);
+            var menu = document.querySelector('.menu-item.with-dropdown');
+            menu.addEventListener('mouseout', function (event) {
+                if (!menu.contains(event.relatedTarget)) {
+                    dropdown.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
