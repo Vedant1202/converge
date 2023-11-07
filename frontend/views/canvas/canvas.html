@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/views/canvas/notesPane.css">
     <link rel="stylesheet" href="/views/canvas/sharing.css">
     <link rel="stylesheet" href="/views/canvas/userMenuStyles.css">
+    <link rel="stylesheet" href="/views/canvas/optionsStyles.css">
     <script src="/resources/jquery.min.js"></script>
     <script src="/resources/fabric.min.js"></script>
     <script src="/resources/heatmap.min.js"></script>
@@ -59,7 +60,16 @@
         <div class="circular-button notepad" data-tooltip="Open Notepad">📝</div>
         <div class="circular-button collaboration" data-tooltip="Collaboration menu">🤝</div>
     </div>
-
+    <div id="optionsMenu">
+      <ul id="optionsList">
+        <li id="addComment">
+          <textarea id="commentArea" placeholder="add comment..." required></textarea>
+        </li>
+        <li id="copy">Copy</li>
+        <li id="split">Split</li>
+        <li id="delete">Delete</li>
+      </ul>
+    </div>
     <div class="notes">
         <form class="form-container" id="notesWindow">
             <h1>&nbspNotes</h1>
@@ -121,6 +131,7 @@
     <script src="/views/canvas/sharing.js"></script>
     <script src="/js/notes.js"></script>
     <script src="/js/menuOptionsHover.js"></script>
+    <script src="/js/optionsMenu.js"></script>
     <script>
         function openDropdown(id) {
             var dropdown = document.getElementById(id);

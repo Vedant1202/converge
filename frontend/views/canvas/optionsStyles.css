@@ -1,0 +1,45 @@
+* { margin: 0; padding: 0;}
+
+body, html { height: 100%; }
+
+#optionsList {
+    list-style: none;
+    position: absolute;
+    border: 3px solid black;
+    border-radius: 10px;
+    height: 17vh;
+    width: 7vw;
+    display: none;
+    background-color: white;
+    padding-left: 0.5vw;
+}
+
+#optionsList li {
+    margin-top: 1.5vh;
+}
+
+#commentArea {
+    resize: none;
+    border-radius: 15px;
+    background-color: rgb(224, 224, 224);
+    width: 6.1vw;
+    height: 20px;
+    font-size: 9pt;
+    padding-left: 0.3vw;
+    padding-top: 0.5vh;
+    text-align: left;
+}
+
+#copy {
+    padding-left: 0.3vw;
+}
+
+#split {
+    padding-left: 0.3vw;
+}
+
+#delete {
+    padding-left: 0.3vw;
+}
+
+

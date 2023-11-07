@@ -7,6 +7,15 @@ capturedNote.addEventListener("keydown", function (event) {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const notesButton = [...document.querySelectorAll(".circular-button")].find(button => button.textContent === "📝");
+    if (notesButton) {
+        notesButton.addEventListener("click", function () {
+          toggleNotesWindow();
+        });
+    }
+});
+
 // prevents circle from being added when double clicking on note window
 const noteWindow = document.getElementById("notesWindow");
 noteWindow.addEventListener("dblclick", function(event) {
@@ -49,7 +58,9 @@ function addNoteToList() {
             listElement.contentEditable = "false";
             const nContainer = listElement.parentNode;
             if (listElement.textContent === "") {
-                notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                if (notesList.contains(nContainer)) {
+                    notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                }
             }
         })
 
@@ -60,7 +71,9 @@ function addNoteToList() {
                 listElement.contentEditable = "false";
                 const nContainer = listElement.parentNode;
                 if (listElement.textContent === "") {
-                    notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                    if (notesList.contains(nContainer)) {
+                        notesList.removeChild(nContainer); // deletes container of name and note if note edited to be empty
+                    }
                 }
             }
             
