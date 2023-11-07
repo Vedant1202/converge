@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# DS Stores
+**/**/.DS_Store
+
+# Server static files
+backend/public/
