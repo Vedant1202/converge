@@ -130,4 +130,14 @@ $(function () {
         }
         eventReceived = false;
     });
+
+    $('#heatmapBtn').click(function (event) {
+        toggleHeatmapMode();
+        event.stopPropagation();
+    });
+
+    $('#createnewBtn').click(function (event) {
+        toggleCreateMode();
+        event.stopPropagation();
+    });
 })

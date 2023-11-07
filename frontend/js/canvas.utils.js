@@ -1,11 +1,13 @@
 function toggleCreateMode() {
     isCreateMode = !isCreateMode;
     isHeatmapMode = false;
-    heatmapInstance?.setData({data:[]});
-    heatmapInstance = {};
-    [...document.getElementsByClassName("heatmap-canvas")].forEach((e) =>
-        e.remove()
-    );
+    if (heatmapInstance) {
+        heatmapInstance?.setData({data:[]});
+        heatmapInstance = null;
+        [...document.getElementsByClassName("heatmap-canvas")].forEach((e) =>
+            e.remove()
+        );
+    }
 }
 
 function toggleHeatmapMode() {
@@ -28,7 +30,7 @@ function createCircle(x, y) {
             radius: 100,
           });
         // canvas.add(circle);
-        var tbox = new fabric.Textbox('Text on a path', {
+        var tbox = new fabric.Textbox('Topic', {
             left: x - 45,
             top: y - 55,
             width: 100,
