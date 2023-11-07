@@ -115,34 +115,36 @@ function instantiateHeatMap() {
 function onObjectScaled(e) {
     var target = e.target
     var id = target.id;
-    var timestamp = Number(id.split('-')[1]);
-    console.log('width', target.getScaledWidth());
-    // var targetCircle = canvas.fabric.getItemByAttr('id', 'c-' + id);
-
-    socket.emit('event', JSON.stringify({
-        type: 'update',
-        object: 'circle',
-        by: loginData.name,
-        room: loginData.room,
-        data: {
-            x: target.left,
-            y: target.top,
-            id: timestamp,
-            radius: Math.floor(target.getScaledWidth() / 2),
-        }
-    }));
-    console.log('updated', target, {
-        type: 'update',
-        object: 'circle',
-        by: loginData.name,
-        room: loginData.room,
-        data: {
-            x: target.left,
-            y: target.top,
-            id: timestamp,
-            radius: Math.floor(target.width / 2),
-        }
-    })
+    if (id && id.split('-')[1]) {
+        var timestamp = Number(id.split('-')[1]);
+        console.log('width', target.getScaledWidth());
+        // var targetCircle = canvas.fabric.getItemByAttr('id', 'c-' + id);
+    
+        socket.emit('event', JSON.stringify({
+            type: 'update',
+            object: 'circle',
+            by: loginData.name,
+            room: loginData.room,
+            data: {
+                x: target.left,
+                y: target.top,
+                id: timestamp,
+                radius: Math.floor(target.getScaledWidth() / 2),
+            }
+        }));
+        console.log('updated', target, {
+            type: 'update',
+            object: 'circle',
+            by: loginData.name,
+            room: loginData.room,
+            data: {
+                x: target.left,
+                y: target.top,
+                id: timestamp,
+                radius: Math.floor(target.width / 2),
+            }
+        })
+    }
 }
 
 function addCircleOnSocketEvent (eventData) {
