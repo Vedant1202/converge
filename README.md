@@ -15,6 +15,11 @@ yarn
 yarn run dev:watch
 ```
 
+3. See the web app live
+```
+Go to http://localhost:3000/
+```
+
 The above command copies all your frontend files into `backend/public`. Note that these files won't reflect changes if the changes are done in `frontend`.
 
 The server runs `nodemon` which has a live monitoring on any changes in `backend` files. However, for any changes in `frontend` files, you will have to re-run the `dev:watch` command.
