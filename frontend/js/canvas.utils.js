@@ -115,7 +115,6 @@ function instantiateHeatMap() {
 function onObjectScaled(e) {
     var target = e.target
     var id = target.id;
-    if (id && id.split('-')[1]) {
         var timestamp = Number(id.split('-')[1]);
         console.log('width', target.getScaledWidth());
         // var targetCircle = canvas.fabric.getItemByAttr('id', 'c-' + id);
@@ -144,7 +143,6 @@ function onObjectScaled(e) {
                 radius: Math.floor(target.width / 2),
             }
         })
-    }
 }
 
 function addCircleOnSocketEvent (eventData) {
