@@ -11,6 +11,7 @@ var eventReceived;
 $(function () {
     isCreateMode = false;
     isHeatmapMode = false;
+    var loginData;
     if (!!window.localStorage.getItem('loginData')) { // check for login data
         loginData = JSON.parse(window.localStorage.getItem('loginData'));
     } else {
