@@ -1,0 +1,24 @@
+{
+  "name": "converge-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Vedant Nandoskar",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "express": "4",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "scripts": {
+    "copy-frontend": "cp -R ../frontend/ public/",
+    "dev": "node index.js",
+    "dev:watch": "nodemon index.js",
+    "predev": "rm -rf public/ && npm run copy-frontend",
+    "postdev": "rm -rf public/",
+    "predev:watch": "rm -rf public/ && npm run copy-frontend",
+    "postdev:watch": "rm -rf public/"
+  }
+}

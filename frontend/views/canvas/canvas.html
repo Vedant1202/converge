@@ -4,60 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="canvas.css">
-    <script src="../../resources/jquery.min.js"></script>
-    <script src="../../resources/fabric.min.js"></script>
+    <link rel="stylesheet" text="text/css" href="/views/canvas/canvas.css">
+    <link rel="stylesheet" href="/views/canvas/notesPane.css">
+    <script src="/resources/jquery.min.js"></script>
+    <script src="/resources/fabric.min.js"></script>
+    <script src="/resources/heatmap.min.js"></script>
+    <script src="socket.io/socket.io.min.js"></script>
 </head>
 <body>
-    <!-- <div>
-    </div> -->
-    <div class="menu-bar">
-        <ul>
-            <li class="menu-title" contenteditable="true">Title</li>
-            <li><a href="#home">File</a>
-                <ul class="dropdown">
-                    <li><a href="#new">New</a></li>
-                    <li><a href="#open">Open</a></li>
-                    <li><a href="#save">Save</a></li>
-                </ul>
-            </li>
-            <li><a href="#edit">Edit</a>
-                <ul class="dropdown">
-                    <li><a href="#cut">Cut</a></li>
-                    <li><a href="#copy">Copy</a></li>
-                    <li><a href="#paste">Paste</a></li>
-                </ul>
-            </li>
-            <li><a href="#options">Options</a>
-                <ul class="dropdown">
-                    <li><a href="#settings">Settings</a></li>
-                    <li><a href="#preferences">Preferences</a></li>
-                </ul>
-            </li>
-            <li><a href="#help">Help</a>
-                <ul class="dropdown">
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#support">Support</a></li>
-                </ul>
-            </li>
-            <li class="spacer"></li>
-        </ul>
-    </div>
-
-    <!-- Circular buttons -->
-    <div class="circular-menu">
-        <a href="#" class="circular-button new-idea" data-tooltip="Create a new idea">New Idea</a>
-        <a href="#" class="circular-button heatmap" data-tooltip="View HeatMap">HeatMap</a>
-        <a href="#" class="circular-button select" data-tooltip="Select items">Select</a>
-        <a href="#" class "circular-button notepad" data-tooltip="Open Notepad">Notepad</a>
-        <a href="#" class="circular-button collaboration" data-tooltip="Collaboration menu">Collaboration</a>
-    </div>
-
-    <!-- Other stuff here -->
-    
-    <div class="canvas-div">
         <canvas id="canvas"></canvas>
     </div>
-    <script src="../../js/canvas.init.js"></script>
+    <div class="notes">
+        <form class="form-container" id="notesWindow">
+            <h1>&nbspNotes</h1>
+            <ul id="notesList"></ul>
+            <textarea id="writingArea" placeholder="Write a note..." required></textarea>
+        </form>
+    </div>
+    <script src="/js/canvas.init.js"></script>
+    <script src="/js/canvas.utils.js"></script>
+    <script src="/js/notes.js"></script>
 </body>
 </html>
