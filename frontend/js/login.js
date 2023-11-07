@@ -9,7 +9,7 @@ $(function () {
                 room: roomField,
             }
             window.localStorage.setItem('loginData', JSON.stringify(loginData));
-            window.location = '../canvas/canvas.html'
+            window.location = '/canvas';
         } else {
             alert('Invalid inputs! "Name" and "Collaboration Room" should not be empty')
         }

@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="canvas.css">
-    <link rel="stylesheet" href="notesPane.css">
-    <script src="../../resources/jquery.min.js"></script>
-    <script src="../../resources/fabric.min.js"></script>
+    <link rel="stylesheet" text="text/css" href="/views/canvas/canvas.css">
+    <link rel="stylesheet" href="/views/canvas/notesPane.css">
+    <script src="/resources/jquery.min.js"></script>
+    <script src="/resources/fabric.min.js"></script>
+    <script src="/resources/heatmap.min.js"></script>
+    <script src="socket.io/socket.io.min.js"></script>
 </head>
 <body>
-    <!-- <div>
-        Canvas Below
-    </div> -->
-    <div class="canvas-div">
+    <div class="canvas-div" id="canvas-div">
         <canvas id="canvas"></canvas>
     </div>
     <div class="notes">
@@ -23,7 +22,8 @@
             <textarea id="writingArea" placeholder="Write a note..." required></textarea>
         </form>
     </div>
-    <script src="../../js/canvas.init.js"></script>
-    <script src="../../js/notes.js"></script>
+    <script src="/js/canvas.init.js"></script>
+    <script src="/js/canvas.utils.js"></script>
+    <script src="/js/notes.js"></script>
 </body>
 </html>
