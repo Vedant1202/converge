@@ -14,6 +14,9 @@
     <script src="socket.io/socket.io.min.js"></script>
 </head>
 <body>
+    <div id="canvas-div">
+        <canvas id="canvas"></canvas>
+    </div>
     <! This is the top menu for application options -->
     <div class="macos-menu-bar">
         <div class="menu">
@@ -50,8 +53,8 @@
     </div>
     <! This is the side menu with the user Interface options -->
     <div class="circular-menu">
-        <div class="circular-button new-idea" data-tooltip="Create a new idea">➕</div>
-        <div class="circular-button heatmap" data-tooltip="View HeatMap">🔥</div>
+        <div class="circular-button new-idea" id="createnewBtn" data-tooltip="Create a new idea">➕</div>
+        <div class="circular-button heatmap" id="heatmapBtn" data-tooltip="View HeatMap">🔥</div>
         <div class="circular-button select" data-tooltip="Select items">✅</div>
         <div class="circular-button notepad" data-tooltip="Open Notepad">📝</div>
         <div class="circular-button collaboration" data-tooltip="Collaboration menu">🤝</div>
@@ -111,7 +114,6 @@
       </div>
     </div>
     </div>
-    <canvas id="canvas"></canvas>
    <script src="/views/canvas/sharing.js"></script>
     <script src="/js/canvas.init.js"></script>
     <script src="/js/canvas.utils.js"></script>
