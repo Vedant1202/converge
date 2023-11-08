@@ -30,9 +30,11 @@ function optionsEvents() {
                 tgt.forEachObject(function(object,i) {
                     if (object.type == 'group') {
                         var annotBox = object;
+                        tgt.removeWithUpdate(object);
                         annotBox.forEachObject(function(object,j) {
                             object.visible = 1;
                         });
+                        tgt.addWithUpdate(annotBox);
                     }
                 });
             }
@@ -47,9 +49,11 @@ function optionsEvents() {
                 tgt.forEachObject(function(object,i) {
                     if (object.type == 'group') {
                         var annotBox = object;
+                        tgt.removeWithUpdate(object);
                         annotBox.forEachObject(function(object,j) {
                             object.visible = 0;
                         });
+                        tgt.addWithUpdate(annotBox);
                     }
                 });
             }
@@ -68,6 +72,17 @@ function optionsEvents() {
     })
 }
 
+function circleAnnotated(g) {
+    var annotated = false;
+    if (g.isType('group')) {
+        g.forEachObject(function(object, i) {
+            if (object.type == 'group') {
+                annotated = true;
+            }
+        });
+    }
+    return annotated;
+}
 
 
 function createAnnotation() {
