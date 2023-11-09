@@ -7,11 +7,19 @@ var isHeatmapMode;
 var socket;
 var serverURL = 'http://localhost:3000';
 var eventReceived;
+<<<<<<< HEAD
+=======
+var currentGroup;
+var recBox, usrBox, comBox;
+>>>>>>> 65bff24475c1ef54705cd76c2f9c5ed41b8fe050
 
 $(function () {
     isCreateMode = false;
     isHeatmapMode = false;
+<<<<<<< HEAD
     var loginData;
+=======
+>>>>>>> 65bff24475c1ef54705cd76c2f9c5ed41b8fe050
     if (!!window.localStorage.getItem('loginData')) { // check for login data
         loginData = JSON.parse(window.localStorage.getItem('loginData'));
     } else {
@@ -28,15 +36,20 @@ $(function () {
         canvas.height = window.innerHeight;
     })
 
-    canvas = new fabric.Canvas('canvas');
+    canvas = new fabric.Canvas('canvas', {
+        fireRightClick: true,
+        stopContextMenu: true
+    });
 
     $('body').dblclick(function (event) {
         var x = event.clientX;
         var y = event.clientY;
-        createCircle(x, y);
+        createCircle(x, y, Date.now(), 100, true);
         event.stopPropagation();
     });
 
+    optionsEvents();
+    
     canvas.on('mouse:down', function(options) {
         var groupItems;
         if (options.target) {
@@ -117,6 +130,10 @@ $(function () {
         opt.e.stopPropagation();
     });
 
+    canvas.on('object:modified', onObjectScaled);
+
+    canvas.on('object:moved', onObjectScaled);
+
     socket = io(serverURL);
 
     socket.on('event', (event) => {
@@ -124,11 +141,24 @@ $(function () {
         eventReceived = true;
         console.log('event rec', eventData);
         if (eventData.room === loginData.room) {
-            if (eventData.type === 'create', eventData.object === 'circle') {
-                console.log('event rec 2', eventData);
-                createCircle(eventData.data.x, eventData.data.y)
+            if (eventData.type === 'create' && eventData.object === 'circle') {
+                addCircleOnSocketEvent(eventData.data);
+            } else if (eventData.type === 'update' && eventData.object === 'circle') {
+                updateCircleOnSocketEvent(eventData.data);
             }
         }
         eventReceived = false;
     });
+
+    $('#heatmapBtn').click(function (event) {
+        toggleHeatmapMode();
+        event.stopPropagation();
+    });
+
+    $('#createnewBtn').click(function (event) {
+        toggleCreateMode();
+        event.stopPropagation();
+    });
 })
+
+
