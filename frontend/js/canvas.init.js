@@ -7,19 +7,12 @@ var isHeatmapMode;
 var socket;
 var serverURL = 'http://localhost:3000';
 var eventReceived;
-<<<<<<< HEAD
-=======
 var currentGroup;
 var recBox, usrBox, comBox;
->>>>>>> 65bff24475c1ef54705cd76c2f9c5ed41b8fe050
 
 $(function () {
     isCreateMode = false;
     isHeatmapMode = false;
-<<<<<<< HEAD
-    var loginData;
-=======
->>>>>>> 65bff24475c1ef54705cd76c2f9c5ed41b8fe050
     if (!!window.localStorage.getItem('loginData')) { // check for login data
         loginData = JSON.parse(window.localStorage.getItem('loginData'));
     } else {
