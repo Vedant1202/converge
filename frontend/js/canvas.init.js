@@ -22,11 +22,11 @@ $(function () {
 
     document.getElementById('room-name').innerText = 'Room: ' + loginData.room
 
-    canvas = document.getElementById("canvas")
+    canvas = document.getElementById('canvas')
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    window.addEventListener("resize", function() {
+    window.addEventListener('resize', function() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     })
@@ -60,7 +60,7 @@ $(function () {
                 }
         
                 thisTarget.forEachObject(function(object,i) {
-                    if(object.type == "textbox"){           
+                    if(object.type == 'textbox'){           
                         var matrix = thisTarget.calcTransformMatrix();
                         var newPoint = fabric.util.transformPoint({y: object.top, x: object.left}, matrix);
                         var objectPos = {
@@ -76,7 +76,7 @@ $(function () {
                                 group._restoreObjectsState();
                                 canvas.remove(group);
                                 for (var i = 0; i < groupItems.length; i++) {
-                                    if(groupItems[i] != "textbox"){
+                                    if(groupItems[i] != 'textbox'){
                                         groupItems[i].selectable = false;
                                     }                               
                                     canvas.add(groupItems[i]);
@@ -156,6 +156,18 @@ $(function () {
         toggleCreateMode();
         event.stopPropagation();
     });
+
+    var header = document.getElementById('toolbar');
+    var btns = header.getElementsByClassName('toolbar-item');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener('click', function() {
+            var current = document.getElementsByClassName('toolbar-active');
+            if (current && current[0]) {
+                current[0].className = current[0].className.replace(' toolbar-active', '');
+            }
+            this.className += ' toolbar-active';
+        });
+    }
 })
 
 
