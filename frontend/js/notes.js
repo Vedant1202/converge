@@ -1,14 +1,13 @@
 const capturedNote = document.getElementById("writingArea");
 capturedNote.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
+        addNoteToList(null, null, true);
         event.preventDefault();
-        addNoteToList();
-        
     }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const notesButton = [...document.querySelectorAll(".circular-button")].find(button => button.textContent === "📝");
+    const notesButton = document.getElementById('notesBtn');
     if (notesButton) {
         notesButton.addEventListener("click", function () {
           toggleNotesWindow();
@@ -22,10 +21,15 @@ noteWindow.addEventListener("dblclick", function(event) {
     event.stopPropagation();
 })
 
-function addNoteToList() {
+function addNoteToList(incomingText = null, incomingName = null, emit = false) {
     const capturedNote = document.getElementById("writingArea");
     const notesList = document.getElementById("notesList");
-    const text = capturedNote.value.trim();
+    let text;
+    if (incomingText) {
+        text = incomingText;
+    } else {
+        text = capturedNote.value.trim();
+    }
     if (text !== "") {
         const noteContainer = document.createElement("div"); // create container for note post format :{p, li}
         const nameField = document.createElement("p"); // create paragraph to hold user name
@@ -33,7 +37,12 @@ function addNoteToList() {
 
         const jsonData = localStorage.getItem("loginData"); // retreive saved login data from login screen
         const object = JSON.parse(jsonData); // parse through login data
-        const userName = object.name; // set user name equal name field from login data
+        let userName;
+        if (incomingName) {
+            userName = incomingName;
+        } else {
+            userName = object.name; // set user name equal name field from login data
+        }
 
         // if there exists a username, set the namefield. Otherwise, user is Anonymous
         if (userName) {
@@ -84,6 +93,19 @@ function addNoteToList() {
         notesList.appendChild(noteContainer); // insert user name and note into note list
         notesList.scrollTop = notesList.scrollHeight; // scroll to recently added note
         capturedNote.value = ""; // resets note writing text box
+
+        console.log('here')
+        if (emit) {
+            socket.emit('event', JSON.stringify({
+                type: 'create',
+                object: 'notes',
+                by: loginData.name,
+                room: loginData.room,
+                data: {
+                    text: text,
+                }
+            }));
+        }
     }
 }
 

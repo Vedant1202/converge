@@ -28,9 +28,8 @@ function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false) 
             fill: 'transparent',
             stroke: '.2rem black',
             radius: radius,
-            id: 'c-' + timestamp
+            id: 'c-' + timestamp,
           });
-        // canvas.add(circle);
         var tbox = new fabric.Textbox('Topic', {
             left: x - 45,
             top: y - 55,
@@ -39,13 +38,10 @@ function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false) 
             clipPath: circle,
             fill: 'black',
             fontcolor: 'black',
-            id: 't-' + timestamp
+            id: 't-' + timestamp,
           });
         var group = new fabric.Group([ tbox, circle ], {
-            fill: 'green',
-            stroke: 'red',
             id: 'g-' + timestamp
-            
         })
         canvas.add(group);
         if (emit) {
