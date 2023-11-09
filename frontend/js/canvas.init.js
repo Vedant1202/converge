@@ -20,6 +20,8 @@ $(function () {
         window.location = '/login';
     }
 
+    document.getElementById('room-name').innerText = 'Room: ' + loginData.room
+
     canvas = document.getElementById("canvas")
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -138,6 +140,8 @@ $(function () {
                 addCircleOnSocketEvent(eventData.data);
             } else if (eventData.type === 'update' && eventData.object === 'circle') {
                 updateCircleOnSocketEvent(eventData.data);
+            } else if (eventData.type === 'create' && eventData.object === 'notes') {
+                addNoteToList(eventData.data.text, eventData.by);
             }
         }
         eventReceived = false;
