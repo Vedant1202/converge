@@ -16,41 +16,41 @@
 </head>
 <body>
     <div id="canvas-div">
+      <! This is the top menu for application options -->
+      <div class="macos-menu-bar">
+          <div class="menu">
+              <div class="menu-title" contenteditable="true">Your Title</div>
+              <div class="menu-items">
+                  <div class="menu-item with-dropdown" onmouseover="openDropdown('fileDropdown')" onmouseout="closeDropdown('fileDropdown')">File
+                      <ul id="fileDropdown" class="dropdown">
+                          <li><a href="#new">New</a></li>
+                          <li><a href="#open">Open</a></li>
+                          <li><a href="#save">Save</a></li>
+                      </ul>
+                  </div>
+                  <div class="menu-item with-dropdown" onmouseover="openDropdown('editDropdown')" onmouseout="closeDropdown('editDropdown')">Edit
+                      <ul id="editDropdown" class="dropdown">
+                          <li><a href="#cut">Cut</a></li>
+                          <li><a href="#copy">Copy</a></li>
+                          <li><a href="#paste">Paste</a></li>
+                      </ul>
+                  </div>
+                  <div class="menu-item with-dropdown" onmouseover="openDropdown('optionsDropdown')" onmouseout="closeDropdown('optionsDropdown')">Options
+                      <ul id="optionsDropdown" class="dropdown">
+                          <li><a href="#settings">Settings</a></li>
+                          <li><a href="#preferences">Preferences</a></li>
+                      </ul>
+                  </div>
+                  <div class="menu-item with-dropdown" onmouseover="openDropdown('helpDropdown')" onmouseout="closeDropdown('helpDropdown')">Help
+                      <ul id="helpDropdown" class="dropdown">
+                          <li><a href="#faq">FAQ</a></li>
+                          <li><a href="#support">Support</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
         <canvas id="canvas"></canvas>
-    </div>
-    <! This is the top menu for application options -->
-    <div class="macos-menu-bar">
-        <div class="menu">
-            <div class="menu-title" contenteditable="true">Your Title</div>
-            <div class="menu-items">
-                <div class="menu-item with-dropdown" onmouseover="openDropdown('fileDropdown')" onmouseout="closeDropdown('fileDropdown')">File
-                    <ul id="fileDropdown" class="dropdown">
-                        <li><a href="#new">New</a></li>
-                        <li><a href="#open">Open</a></li>
-                        <li><a href="#save">Save</a></li>
-                    </ul>
-                </div>
-                <div class="menu-item with-dropdown" onmouseover="openDropdown('editDropdown')" onmouseout="closeDropdown('editDropdown')">Edit
-                    <ul id="editDropdown" class="dropdown">
-                        <li><a href="#cut">Cut</a></li>
-                        <li><a href="#copy">Copy</a></li>
-                        <li><a href="#paste">Paste</a></li>
-                    </ul>
-                </div>
-                <div class="menu-item with-dropdown" onmouseover="openDropdown('optionsDropdown')" onmouseout="closeDropdown('optionsDropdown')">Options
-                    <ul id="optionsDropdown" class="dropdown">
-                        <li><a href="#settings">Settings</a></li>
-                        <li><a href="#preferences">Preferences</a></li>
-                    </ul>
-                </div>
-                <div class="menu-item with-dropdown" onmouseover="openDropdown('helpDropdown')" onmouseout="closeDropdown('helpDropdown')">Help
-                    <ul id="helpDropdown" class="dropdown">
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#support">Support</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
     <! This is the side menu with the user Interface options -->
       <div class="circular-menu">
