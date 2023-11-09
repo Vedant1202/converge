@@ -36,6 +36,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 75px; /* Rounded corners */
+    padding: 10px; /* Add some padding for spacing */
+    background-color: #cccccc;
+    border: 2px solid black; /* Black outline */
 }
 
 .circular-button {
@@ -116,4 +120,21 @@
 
 .menu-item.with-dropdown:hover .dropdown {
     display: block;
+}
+
+.circular-button img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain; 
+}
+
+.circular-button {
+    width: 60px; /* Adjust the width and height as needed */
+    height: 60px;
+    background-color: ghostwhite; /* Background color for the circular button */
+    border-radius: 50%; /* Makes it a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px; 
 }

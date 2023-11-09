@@ -7,7 +7,7 @@
     <link rel="stylesheet" text="text/css" href="/views/canvas/canvas.css">
     <link rel="stylesheet" href="/views/canvas/notesPane.css">
     <link rel="stylesheet" href="/views/canvas/sharing.css">
-    <link rel="stylesheet" href="/views/canvas/userMenuStyles.css">
+    <link rel="stylesheet" href="userMenuStyles.css">
     <link rel="stylesheet" href="/views/canvas/optionsStyles.css">
     <script src="/resources/jquery.min.js"></script>
     <script src="/resources/fabric.min.js"></script>
@@ -53,13 +53,25 @@
         </div>
     </div>
     <! This is the side menu with the user Interface options -->
-    <div class="circular-menu">
-        <div class="circular-button new-idea" id="createnewBtn" data-tooltip="Create a new idea">➕</div>
-        <div class="circular-button heatmap" id="heatmapBtn" data-tooltip="View HeatMap">🔥</div>
-        <div class="circular-button select" data-tooltip="Select items">✅</div>
-        <div class="circular-button notepad" data-tooltip="Open Notepad">📝</div>
-        <div class="circular-button collaboration" data-tooltip="Collaboration menu">🤝</div>
-    </div>
+      <div class="circular-menu">
+        <div class="circular-button heatmap" data-tooltip="View HeatMap">
+          <img src="heatmap.png" alt="HeatMap">
+      </div>
+      <div class="circular-button new-idea" data-tooltip="Create a new idea">
+          <img src="plus.png" alt="New Idea">
+      </div>
+      
+      <div class="circular-button select" data-tooltip="Select items">
+          <img src="cursor.png" alt="Select">
+      </div>
+      <div class="circular-button notepad" data-tooltip="Open Notepad">
+          <img src="notes.png" alt="Notepad">
+      </div>
+      <div class="circular-button collaboration" data-tooltip="Collaboration menu">
+          <img src="share.png" alt="Collaboration">
+      </div>
+  </div>
+  
     <div id="optionsMenu">
       <ul id="optionsList">
         <li id="addComment">
