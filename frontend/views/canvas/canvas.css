@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0; font-size: 12px !important;}
+* { margin: 0; padding: 0;}
 
 body, html { height: 100%; }
 
@@ -6,6 +6,9 @@ body, html { height: 100%; }
     border: 2px black dashed;
 }
 
+.canvas-div, .room-title, .toolbar, canvas, #canvas {
+    position: absolute !important;
+}
 
 #canvas {
     display: block;
@@ -86,7 +89,7 @@ body, html { height: 100%; }
 .toolbar {
     display: flex;
     position: sticky;
-    z-index: 1;
+    z-index: 10;
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 8px;
@@ -134,10 +137,10 @@ body, html { height: 100%; }
     background-color: #ffffff;
     max-width: fit-content;
     color: #6e6e6e !important;
-    padding: 2px 4px;
+    padding: 4px 8px;
     text-align: center;
     border-radius: 4px;
-    font-size: 8px;
+    font-size: 14px;
     position: absolute;
     z-index: 100;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -154,11 +157,12 @@ body, html { height: 100%; }
 .room-title {
     display: flex;
     position: sticky;
-    z-index: 1;
+    z-index: 10;
     border-radius: 8px;
     max-width: fit-content;
+    background-color: #ffffff;
     top: 2vh;
-    left: 93%;
+    left: 92%;
     padding: .4em;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     transition-duration: .2s;
@@ -166,7 +170,7 @@ body, html { height: 100%; }
 }
 
 .room-title * {
-    font-size: 14px !important;
+    font-size: 16px !important;
     padding: 2px 4px;
     color: #6e6e6e !important;
 }
