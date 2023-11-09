@@ -7,13 +7,8 @@ capturedNote.addEventListener("keydown", function (event) {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const notesButton = [...document.querySelectorAll(".circular-button")].find(button => button.textContent === "📝");
-    if (notesButton) {
-        notesButton.addEventListener("click", function () {
-          toggleNotesWindow();
-        });
-    }
+$('#notesBtn').click(function (event) {
+    toggleNotesWindow();
 });
 
 // prevents circle from being added when double clicking on note window
