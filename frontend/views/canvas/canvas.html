@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <link rel="stylesheet" text="text/css" href="/views/canvas/canvas.css">
     <link rel="stylesheet" href="/views/canvas/notesPane.css">
     <link rel="stylesheet" href="/views/canvas/sharing.css">
@@ -15,11 +19,41 @@
     <script src="socket.io/socket.io.min.js"></script>
 </head>
 <body>
+    <div class="room-title">
+        <span id="room-name"></span>
+    </div>
+    <div class="toolbar">
+        <div class="toolbar-item" data-tooltip="Heatmap" id="heatmapBtn">
+            <span class="material-symbols-outlined">
+                mode_heat_cool
+            </span>
+        </div>
+        <div class="toolbar-item" data-tooltip="Add new" id="createnewBtn">
+            <span class="material-symbols-outlined">
+                add_circle
+            </span>
+        </div>
+        <div class="toolbar-item" data-tooltip="Select" id="selectBtn">
+            <span class="material-symbols-outlined">
+                select_all
+            </span>
+        </div>
+        <div class="toolbar-item" data-tooltip="Notes" id="notesBtn">
+            <span class="material-symbols-outlined">
+                edit_note
+            </span>
+        </div>
+        <div class="toolbar-item" data-tooltip="Collaboration" id="collaborationBtn">
+            <span class="material-symbols-outlined">
+                groups
+            </span>
+        </div>
+    </div>
     <div id="canvas-div">
         <canvas id="canvas"></canvas>
     </div>
     <! This is the top menu for application options -->
-    <div class="macos-menu-bar">
+    <!-- <div class="macos-menu-bar">
         <div class="menu">
             <div class="menu-title" contenteditable="true">Your Title</div>
             <div class="menu-items">
@@ -51,15 +85,16 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <! This is the side menu with the user Interface options -->
-    <div class="circular-menu">
+    <!-- <div class="circular-menu">
         <div class="circular-button new-idea" id="createnewBtn" data-tooltip="Create a new idea">➕</div>
         <div class="circular-button heatmap" id="heatmapBtn" data-tooltip="View HeatMap">🔥</div>
         <div class="circular-button select" data-tooltip="Select items">✅</div>
         <div class="circular-button notepad" data-tooltip="Open Notepad">📝</div>
         <div class="circular-button collaboration" data-tooltip="Collaboration menu">🤝</div>
-    </div>
+    </div> -->
+
     <div id="optionsMenu">
       <ul id="optionsList">
         <li id="addComment">

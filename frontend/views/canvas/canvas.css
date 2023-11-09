@@ -1,4 +1,4 @@
-* { margin: 0; padding: 0;}
+* { margin: 0; padding: 0; font-size: 12px !important;}
 
 body, html { height: 100%; }
 
@@ -81,3 +81,92 @@ body, html { height: 100%; }
 }
 
 /* Circular buttons styling */
+
+/* Toolbar styling */
+.toolbar {
+    display: flex;
+    position: sticky;
+    z-index: 1;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 8px;
+    max-width: fit-content;
+    top: 30vh;
+    padding: .1em;
+    margin: .4em;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.toolbar:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.toolbar-item {
+    border-radius: 50%;
+    margin: .4em .2em;
+    cursor: pointer;
+    color: #b5b5b5 !important;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.toolbar-item:hover {
+    transform: scale(1.1);
+    color: #6e6e6e !important;
+    transform-origin: center;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    background-color: #ffffff;
+    max-width: fit-content;
+    color: #6e6e6e !important;
+    padding: 2px 4px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 8px;
+    position: absolute;
+    z-index: 100;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.material-symbols-outlined {
+    font-size: 32px !important;
+}
+
+.room-title {
+    display: flex;
+    position: sticky;
+    z-index: 1;
+    border-radius: 8px;
+    max-width: fit-content;
+    top: 2vh;
+    left: 93%;
+    padding: .4em;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.room-title * {
+    font-size: 14px !important;
+    padding: 2px 4px;
+    color: #6e6e6e !important;
+}
