@@ -17,7 +17,7 @@ document.addEventListener("click", function(event) {
 comArea.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
         event.preventDefault();
-        createAnnotation();
+        createAnnotation(null, null, null, true);
         optionsMenu.style.display = "none";
     }
 });
@@ -85,12 +85,31 @@ function circleAnnotated(g) {
 }
 
 
-function createAnnotation() {
-    const text = comArea.value.trim();
+function createAnnotation(incomingText = null, incomingName = null, incomingGroup = false, emit = false) {
+    let text;
+    if (incomingText) {
+        text = incomingText;
+    } else {
+        text = comArea.value.trim();
+    }
+    if (incomingGroup) {
+        canvas.forEachObject(function (obj) {
+            if (obj.type === 'group' && obj.id === incomingGroup) {
+                currentGroup = obj;
+                return;
+            }
+        });
+    }
     if (text !== "") {
         const jsonData = localStorage.getItem("loginData"); // retreive saved login data from login screen
         const object = JSON.parse(jsonData); // parse through login data
-        const userName = object.name; // set user name equal name field from login data
+    
+        let userName;
+        if (incomingName) {
+            userName = incomingName;
+        } else {
+            userName = object.name; // set user name equal name field from login data
+        }
 
         comArea.value = ""; // resets note writing text box
         var commentPresent = false;
@@ -139,11 +158,25 @@ function createAnnotation() {
     
             
     
-            var gp = new fabric.Group([ recBox, usrBox, comBox ]);
+            var gp = new fabric.Group([ recBox, usrBox, comBox ], {
+                id: currentGroup.id
+            });
             
             currentGroup.addWithUpdate(gp);
             canvas.renderAll();
             
         }
+    }
+    if (emit) {
+        socket.emit('event', JSON.stringify({
+            type: 'create',
+            object: 'annotations',
+            by: loginData.name,
+            room: loginData.room,
+            data: {
+                text: text,
+                group: currentGroup.id,
+            }
+        }));
     }
 }
