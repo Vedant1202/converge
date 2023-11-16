@@ -96,7 +96,7 @@ $(function () {
                             editObject.on('editing:exited', function (options) {
                                 if(exitEditing){
                                     var items = [];
-                                    let id = groupItems[0].id
+                                    let id = groupItems[0].id.split('-')[1]
                                     groupItems.forEach(function (obj) {
                                         items.push(obj);
                                         canvas.remove(obj);
