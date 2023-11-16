@@ -96,13 +96,14 @@ $(function () {
                             editObject.on('editing:exited', function (options) {
                                 if(exitEditing){
                                     var items = [];
+                                    let id = groupItems[0].id
                                     groupItems.forEach(function (obj) {
                                         items.push(obj);
                                         canvas.remove(obj);
                                     });
         
                                     var grp
-                                    grp = new fabric.Group(items, {});
+                                    grp = new fabric.Group(items, {id});
                                     canvas.add(grp);
                                     exitEditing = false;
                                 }
