@@ -143,6 +143,8 @@ $(function () {
                 updateCircleOnSocketEvent(eventData.data);
             } else if (eventData.type === 'create' && eventData.object === 'notes') {
                 addNoteToList(eventData.data.text, eventData.by);
+            } else if (eventData.type === 'create' && eventData.object === 'annotations') {
+                createAnnotation(eventData.data.text, eventData.by, eventData.data.group);
             }
         }
         eventReceived = false;
