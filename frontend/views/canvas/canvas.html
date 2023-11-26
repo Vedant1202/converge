@@ -105,9 +105,15 @@
         <li id="addComment">
           <textarea id="commentArea" placeholder="add comment..." required></textarea>
         </li>
-        <li id="copy">Copy</li>
-        <li id="split">Split</li>
-        <li id="delete">Delete</li>
+        <li id="merge">
+            <button onclick="mergeCircle()">Merge</button>
+        </li>
+        <li id="split">
+            <button onclick="splitCircle()">Split</button>
+        </li>
+        <li id="delete">
+            <button onclick="deleteCircle(null, true)">Delete</button>
+        </li>
       </ul>
     </div>
     <div class="notes">

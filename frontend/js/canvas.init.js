@@ -268,7 +268,9 @@ $(function () {
     optionsEvents();
     
     canvas.on('mouse:down', function(options) {
-        console.log('here');
+        if (options.button !== 1) {
+            return;
+        }
         var groupItems;
         if (options.target) {
             var thisTarget = options.target; 
@@ -366,6 +368,10 @@ $(function () {
                 updateCircleOnSocketEvent(eventData.data);
             } else if (eventData.type === 'create' && eventData.object === 'notes') {
                 addNoteToList(eventData.data.text, eventData.by);
+            } else if (eventData.type === 'create' && eventData.object === 'annotations') {
+                createAnnotation(eventData.data.text, eventData.by, eventData.data.group);
+            } else if (eventData.type === 'delete' && eventData.object === 'circle') {
+                deleteCircle(eventData.data.group);
             }
         }
         eventReceived = false;
