@@ -1,6 +1,6 @@
 const optionsMenu = document.getElementById("optionsList");
 const comArea = document.getElementById("commentArea");
-const cpy = document.getElementById("copy");
+const merge = document.getElementById("merge");
 const splt = document.getElementById("split");
 const del = document.getElementById("delete");
 
@@ -9,7 +9,7 @@ optionsMenu.addEventListener("contextmenu", function(event) {
 })
 
 document.addEventListener("click", function(event) {
-    if (event.target !== optionsMenu && event.target !== comArea && event.target !== cpy && event.target !== splt && event.target !== del) {
+    if (event.target !== optionsMenu && event.target !== comArea && event.target !== merge && event.target !== splt && event.target !== del) {
         optionsMenu.style.display = "none";
     }
 })
@@ -84,6 +84,38 @@ function circleAnnotated(g) {
     return annotated;
 }
 
+function deleteCircle(incomingGroup = false, emit = false) {
+    console.log("Delete toggled");
+    if (incomingGroup) {
+        canvas.forEachObject(function (obj) {
+            if (obj.type === 'group' && obj.id === incomingGroup) {
+                currentGroup = obj;
+                return;
+            }
+        });
+    }
+    canvas.remove(currentGroup);
+    optionsMenu.style.display = "none";
+    if (emit) {
+        socket.emit('event', JSON.stringify({
+            type: 'delete',
+            object: 'circle',
+            by: loginData.name,
+            room: loginData.room,
+            data: {
+                group: currentGroup.id,
+            }
+        }));
+    }
+}
+
+function mergeCircle() {
+    console.log("Merge toggled");
+}
+
+function splitCircle() {
+    console.log("Split toggled");
+}
 
 function createAnnotation(incomingText = null, incomingName = null, incomingGroup = false, emit = false) {
     let text;
