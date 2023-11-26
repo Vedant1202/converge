@@ -1,5 +1,6 @@
 function toggleCreateMode() {
-    isCreateMode = !isCreateMode;
+    isCreateMode = true;
+    canvas.selection = false;
     isHeatmapMode = false;
     if (heatmapInstance) {
         heatmapInstance?.setData({data:[]});
@@ -20,19 +21,25 @@ function toggleHeatmapMode() {
     }
 }
 
+function toggleSelectMode() {
+    isCreateMode = false;
+    canvas.selection = true;
+    isHeatmapMode = false;
+}
+
 function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false) {
-    if (isCreateMode || eventReceived) {
+    if (eventReceived) {
         var circle = new fabric.Circle({
-            left: x - 100,
-            top: y - 150,
+            left: x,
+            top: y,
             fill: 'transparent',
             stroke: '.2rem black',
             radius: radius,
             id: 'c-' + timestamp,
           });
         var tbox = new fabric.Textbox('Topic', {
-            left: x - 45,
-            top: y - 55,
+            left: circle.getCenterPoint().x,
+            top: circle.getCenterPoint().y,
             width: 100,
             fontSize: '16',
             clipPath: circle,
@@ -43,7 +50,7 @@ function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false) 
         var group = new fabric.Group([ tbox, circle ], {
             id: 'g-' + timestamp
         })
-        canvas.add(group);
+        canvas.add(group).setActiveObject(circle);
         if (emit) {
             console.log('here', emit);
             socket.emit('event', JSON.stringify({
