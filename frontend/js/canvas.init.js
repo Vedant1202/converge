@@ -145,6 +145,8 @@ $(function () {
                 addNoteToList(eventData.data.text, eventData.by);
             } else if (eventData.type === 'create' && eventData.object === 'annotations') {
                 createAnnotation(eventData.data.text, eventData.by, eventData.data.group);
+            } else if (eventData.type === 'delete' && eventData.object === 'circle') {
+                deleteCircle(eventData.data.group);
             }
         }
         eventReceived = false;
