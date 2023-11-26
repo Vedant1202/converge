@@ -91,6 +91,7 @@ $(function () {
                             canvas.setActiveObject(object);
         
                             object.enterEditing();
+                            object.hiddenTextarea.setAttribute('maxlength', 24);
                             object.selectAll();
         
                             editObject = object;

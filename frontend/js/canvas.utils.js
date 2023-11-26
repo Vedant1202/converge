@@ -31,13 +31,12 @@ function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false) 
             id: 'c-' + timestamp,
           });
         var tbox = new fabric.Textbox('Topic', {
-            left: x - 45,
+            left: x - 90,
             top: y - 55,
-            width: 100,
-            fontSize: '16',
-            clipPath: circle,
+            width: 180,
+            fontSize: 16,
+            textAlign: 'center',
             fill: 'black',
-            fontcolor: 'black',
             id: 't-' + timestamp,
           });
         var group = new fabric.Group([ tbox, circle ], {
