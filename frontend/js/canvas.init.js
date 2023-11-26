@@ -97,6 +97,11 @@ $(function () {
             // var activeObj = inst.canvas.getActiveObject();
             // var pointer = inst.canvas.getPointer(o.e);
             var activeObj = inst.canvas.getActiveObject();
+            if (activeObj.radius <= 10) {
+                inst.canvas.remove(activeObj);
+                inst.disable();
+                return;
+            }
             var timestamp = activeObj.id.split('-')[1];
             var left = activeObj.getCenterPoint().x;
             var right = activeObj.getCenterPoint().y;
@@ -124,7 +129,7 @@ $(function () {
                 id: 'g-' + timestamp
             })
             inst.canvas.add(group)
-            inst.canvas.renderAll();
+            // inst.canvas.renderAll();
             inst.disable();
             socket.emit('event', JSON.stringify({
                 type: 'create',
@@ -321,7 +326,8 @@ $(function () {
                             editObject.on('editing:exited', function (options) {
                                 if(exitEditing){
                                     var items = [];
-                                    let id = "g-" + groupItems[0].id.split('-')[1]
+                                    var timestamp = groupItems[0].id.split('-')[1];
+                                    let id = "g-" + timestamp
                                     groupItems.forEach(function (obj) {
                                         items.push(obj);
                                         canvas.remove(obj);
@@ -331,6 +337,17 @@ $(function () {
                                     grp = new fabric.Group(items, {id});
                                     canvas.add(grp);
                                     exitEditing = false;
+                                    var editedText = editObject.text;
+                                    socket.emit('event', JSON.stringify({
+                                        type: 'update',
+                                        object: 'text',
+                                        by: loginData.name,
+                                        room: loginData.room,
+                                        data: {
+                                            text: editedText,
+                                            id: timestamp,
+                                        }
+                                    }));
                                 }
                             });
                         }
@@ -372,6 +389,8 @@ $(function () {
                 createAnnotation(eventData.data.text, eventData.by, eventData.data.group);
             } else if (eventData.type === 'delete' && eventData.object === 'circle') {
                 deleteCircle(eventData.data.group);
+            } else if (eventData.type === 'update' && eventData.object === 'text') {
+                updateTextOnSocketEvent(eventData.data);
             }
         }
         eventReceived = false;

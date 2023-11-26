@@ -27,7 +27,7 @@ function toggleSelectMode() {
     isHeatmapMode = false;
 }
 
-function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false) {
+function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false, text = 'Topic') {
     if (eventReceived) {
         var circle = new fabric.Circle({
             left: x,
@@ -37,7 +37,7 @@ function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false) 
             radius: radius,
             id: 'c-' + timestamp,
           });
-        var tbox = new fabric.Textbox('Topic', {
+        var tbox = new fabric.Textbox(text, {
             left: circle.getCenterPoint().x,
             top: circle.getCenterPoint().y,
             width: 100,
@@ -118,7 +118,9 @@ function instantiateHeatMap() {
 function onObjectScaled(e) {
     var target = e.target
     var id = target.id;
+    if (id.startsWith('t-')) return;
         var timestamp = Number(id.split('-')[1]);
+        var text = target._objects[0].text;
         console.log('width', target.getScaledWidth());
         // var targetCircle = canvas.fabric.getItemByAttr('id', 'c-' + id);
     
@@ -132,6 +134,7 @@ function onObjectScaled(e) {
                 y: target.top,
                 id: timestamp,
                 radius: Math.floor(target.getScaledWidth() / 2),
+                text: text,
             }
         }));
         console.log('updated', target, {
@@ -144,6 +147,7 @@ function onObjectScaled(e) {
                 y: target.top,
                 id: timestamp,
                 radius: Math.floor(target.width / 2),
+                text: text,
             }
         })
 }
@@ -170,8 +174,16 @@ function updateCircleOnSocketEvent (eventData) {
     console.log('data rec update', eventData, 'g-' + id);
     removeObjectFromCanvasById('g-' + id); // first remove object
 
-    createCircle(eventData.x, eventData.y, eventData.id, eventData.radius);
+    createCircle(eventData.x, eventData.y, eventData.id, eventData.radius, false, eventData.text);
     delete heatmapData[id]
     addToHeatmap(eventData.x, eventData.y, eventData.id, eventData.radius);
     
+}
+
+function updateTextOnSocketEvent (eventData) {
+    console.log('called update');
+    var id = eventData.id;
+    var groupObj = getObjectFromCanvasById('g-' + id);
+    var targetObj = groupObj._objects[0];
+    targetObj.text = eventData.text;
 }
