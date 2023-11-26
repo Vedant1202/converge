@@ -33,6 +33,8 @@ function optionsEvents() {
                         tgt.removeWithUpdate(object);
                         annotBox.forEachObject(function(object,j) {
                             object.visible = 1;
+                            object.opacity = 1;
+                            
                         });
                         tgt.addWithUpdate(annotBox);
                     }
@@ -51,7 +53,8 @@ function optionsEvents() {
                         var annotBox = object;
                         tgt.removeWithUpdate(object);
                         annotBox.forEachObject(function(object,j) {
-                            object.visible = 0;
+                            object.visible = 1;
+                            object.opacity = 0.05;
                         });
                         tgt.addWithUpdate(annotBox);
                     }
@@ -162,6 +165,7 @@ function createAnnotation(incomingText = null, incomingName = null, incomingGrou
                 visible: 1,
                 stroke: 'black',
                 strokeWidth: 2,
+                opacity: 0.05,
     
             });
     
@@ -175,6 +179,7 @@ function createAnnotation(incomingText = null, incomingName = null, incomingGrou
                 fontSize: '16',
                 fill: 'darkgray',
                 visible: 1,
+                opacity: 0.05,
             });
     
             var comBox = new fabric.Textbox(text, {
@@ -186,6 +191,7 @@ function createAnnotation(incomingText = null, incomingName = null, incomingGrou
                 fontSize: '16',
                 fill: 'black',
                 visible: 1,
+                opacity: 0.05,
             });
     
             

@@ -46,6 +46,9 @@ $(function () {
     optionsEvents();
     
     canvas.on('mouse:down', function(options) {
+        if (options.button !== 1) {
+            return;
+        }
         var groupItems;
         if (options.target) {
             var thisTarget = options.target; 
