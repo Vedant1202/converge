@@ -8,7 +8,7 @@ body, html { height: 100%; }
     border: 3px solid black;
     border-radius: 10px;
     height: 17vh;
-    width: 7vw;
+    width: 8vw;
     display: none;
     background-color: white;
     padding-left: 0.5vw;
@@ -22,9 +22,9 @@ body, html { height: 100%; }
     resize: none;
     border-radius: 15px;
     background-color: rgb(224, 224, 224);
-    width: 6.1vw;
+    width: 7vw;
     height: 20px;
-    font-size: 9pt;
+    font-size: 8pt;
     padding-left: 0.3vw;
     padding-top: 0.5vh;
     text-align: left;

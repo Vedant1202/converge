@@ -2,6 +2,22 @@
 
 body, html { height: 100%; }
 
+button {
+    background-color: #ffffff;
+    border: 0;
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+button:hover {
+    background-color: #ffffff;
+    border: 0;
+    font-weight: 900;
+    cursor: pointer;
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 .canvas-div {
     border: 2px black dashed;
 }
