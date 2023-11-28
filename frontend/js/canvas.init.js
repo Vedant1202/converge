@@ -19,7 +19,6 @@ $(function () {
         loginData = JSON.parse(window.localStorage.getItem('loginData'));
         const firstTimeData = JSON.parse(window.localStorage.getItem('convergeFirstTimeData'));
         if (firstTimeData && firstTimeData.convergeFirstTimeUser === true) {
-            alert(JSON.stringify(firstTimeData));
             window.localStorage.setItem('convergeFirstTimeData', JSON.stringify({convergeFirstTimeUser: false}));
             toggleTutorialMenu()
         }
