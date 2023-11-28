@@ -19,15 +19,23 @@
     <script src="socket.io/socket.io.min.js"></script>
 </head>
 <body>
+    <div class="overlay" id="overlay">
+        <div class="overlay-content">
+            <h1>
+                Tutorial
+            </h1>
+            <iframe width="966" height="543" src="https://www.youtube.com/embed/XTvXoPObIyo" title="Demo Converge" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
     <div class="room-title">
         <span id="room-name"></span>
     </div>
     <div class="toolbar" id="toolbar">
-        <div class="toolbar-item tooltip" id="heatmapBtn">
+        <div class="toolbar-item tooltip" id="tutorialBtn">
             <span class="material-symbols-outlined">
-                mode_heat_cool
+                help
             </span>
-            <span class="tooltiptext">Heatmap</span>
+            <span class="tooltiptext">Tutorial</span>
         </div>
         <div class="toolbar-item tooltip" id="createnewBtn">
             <span class="material-symbols-outlined">

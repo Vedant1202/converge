@@ -2,6 +2,9 @@ function toggleCreateMode() {
     isCreateMode = true;
     canvas.selection = false;
     isHeatmapMode = false;
+    if (isCreateMode) {
+        $('#canvas-div').removeClass('cursor-grab').addClass('cursor-crosshair');
+    }
     if (heatmapInstance) {
         heatmapInstance?.setData({data:[]});
         heatmapInstance = null;
@@ -21,10 +24,22 @@ function toggleHeatmapMode() {
     }
 }
 
+function toggleTutorialMenu() {
+    isTutorialMode = !isTutorialMode;
+    if (isTutorialMode) {
+        $('#overlay').addClass('overlay-visible');
+    } else {
+        $('#overlay').removeClass('overlay-visible');
+    }
+}
+
 function toggleSelectMode() {
     isCreateMode = false;
     canvas.selection = true;
     isHeatmapMode = false;
+    if (!isCreateMode) {
+        $('#canvas-div').removeClass('cursor-crosshair').addClass('cursor-grab');
+    }
 }
 
 function createCircle(x, y, timestamp = Date.now(), radius = 100, emit = false, text = 'Topic') {
@@ -120,7 +135,7 @@ function onObjectScaled(e) {
     var id = target.id;
     if (id.startsWith('t-')) return;
         var timestamp = Number(id.split('-')[1]);
-        var text = target._objects[0].text;
+        var text = target && target._objects && target._objects[0]? target._objects[0].text : 'Topic';
         console.log('width', target.getScaledWidth());
         // var targetCircle = canvas.fabric.getItemByAttr('id', 'c-' + id);
     

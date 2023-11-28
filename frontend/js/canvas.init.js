@@ -4,6 +4,7 @@ var heatmapData = {};
 var canvas;
 var heatmapInstance;
 var isHeatmapMode;
+var isTutorialMode;
 var socket;
 var serverURL = 'http://localhost:3000';
 var eventReceived;
@@ -156,7 +157,7 @@ $(function () {
           var activeObj = inst.canvas.getActiveObject();
       
           activeObj.stroke = 'black',
-            activeObj.strokeWidth = 5;
+            activeObj.strokeWidth = '1';
           activeObj.fill = 'transparent';
       
           if (origX > pointer.x) {
@@ -182,7 +183,7 @@ $(function () {
         };
       
         Circle.prototype.onMouseDown = function(o) {
-            // if (!isCreateMode) return;
+            if (!isCreateMode) return;
           var inst = this;
           inst.enable();
         timestamp = Date.now();
@@ -397,18 +398,28 @@ $(function () {
     });
 
     $('#heatmapBtn').click(function (event) {
-        toggleHeatmapMode();
         event.stopPropagation();
+        toggleHeatmapMode();
+    });
+
+    $('#tutorialBtn').click(function (event) {
+        event.stopPropagation();
+        toggleTutorialMenu();
+    });
+
+    $('#overlay').click(function (event) {
+        event.stopPropagation();
+        toggleTutorialMenu();
     });
 
     $('#createnewBtn').click(function (event) {
-        toggleCreateMode();
         event.stopPropagation();
+        toggleCreateMode();
     });
 
     $('#selectBtn').click(function (event) {
-        toggleSelectMode();
         event.stopPropagation();
+        toggleSelectMode();
     });
 
     var header = document.getElementById('toolbar');
